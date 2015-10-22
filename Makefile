@@ -6,45 +6,59 @@
 #    By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/10/22 15:18:20 by nschilli          #+#    #+#              #
-#    Updated: 2015/10/22 16:44:46 by nschilli         ###   ########.fr        #
+#    Updated: 2015/10/22 17:14:15 by nschilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-NAME =	serveur
-
-SRCDIR = $(NAME)/srcs/
-HDDIR = -I $(NAME)/includes/
-
-CFILES = $(NAME).c \
-
-SRC = $(addprefix $(SRCDIR), $(CFILES))
-
 GCC = gcc
-
-OBJ = $(SRC:.c=.o)
 
 CFLAGS	= -Wall -Wextra -Werror -O3 -g
 
-all: $(NAME)
+SERVEUR = serveur
+CLIENT = client
 
-$(NAME): $(OBJ)
+SERVEUR_DIR = serveur_dir
+CLIENT_DIR = client_dir
+
+SRC_DIR = /srcs/
+INC_DIR = includes/
+
+SERVEUR_FILE = main.c \
+
+SERVEUR_SRC = $(addprefix $(SERVEUR_DIR)/$(SRC_DIR), $(SERVEUR_FILE))
+
+SERVEUR_OBJ = $(SERVEUR_SRC:.c=.o)
+
+CLIENT_FILE = main.c \
+
+CLIENT_SRC = $(addprefix $(CLIENT_DIR)/$(SRC_DIR), $(CLIENT_FILE))
+
+CLIENT_OBJ = $(CLIENT_SRC:.c=.o)
+
+all: $(SERVEUR) $(CLIENT)
+
+$(SERVEUR): $(SERVEUR_OBJ)
 	@make -C libft/
-	@$(GCC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a
-	@echo "\033[33m"compilation of $(NAME) : "\033[32m"Success"\033[0m"
+	@$(GCC) $(CFLAGS) -o $(SERVEUR) $(SERVEUR_OBJ) libft/libft.a
+	@echo "\033[33m"compilation of $(SERVEUR) : "\033[32m"Success"\033[0m"
+
+$(CLIENT): $(CLIENT_OBJ)
+	@make -C libft/
+	@$(GCC) $(CFLAGS) -o $(CLIENT) $(CLIENT_OBJ) libft/libft.a
+	@echo "\033[33m"compilation of $(CLIENT) : "\033[32m"Success"\033[0m"
 
 %.o: %.c
 	@echo -n .
-	@$(GCC) $(CFLAGS) -c -o $@ $^ $(HDDIR)
+	@$(GCC) $(CFLAGS) -c -o $@ $^ -I $(SERVEUR_DIR)/$(INC_DIR) -I $(CLIENT_DIR)/$(INC_DIR)
 
 clean:
 	@make -C libft/ clean
-	@rm -f $(OBJ)
+	@rm -f $(SERVEUR_OBJ)
 
 fclean: clean
 	@make -C libft/ fclean
-	@rm -rf $(NAME)
-	@echo "\033[31m"$(NAME) : deleted"\033[0m"
+	@rm -rf $(SERVEUR) $(CLIENT)
+	@echo "\033[31m"$(SERVEUR) and $(CLIENT) : deleted"\033[0m"
 
 re: fclean all
 

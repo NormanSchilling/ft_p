@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2015/10/22 17:10:35 by nschilli          #+#    #+#             */
+/*   Updated: 2015/10/22 17:14:26 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
+#include "client.h"
+
+int		main(int argc, char **argv)
 {
+	(void)argv;
 	if (argc != 2)
 	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
+		ft_putstr("./client [serveur][port]");
 		exit(-1);
 	}
-
 	return (0);
 }
