@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/20 15:24:01 by nschilli          #+#    #+#             */
+/*   Updated: 2015/02/24 14:19:30 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+char	*ft_strdup(char const *s1)
+{
+	char	*s2;
+	int		len;
+
+	len = ft_strlen(s1);
+	s2 = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s2)
+		return (NULL);
+	while (*s1)
+		*s2++ = *s1++;
+	*s2 = '\0';
+	return (s2 - len);
 }

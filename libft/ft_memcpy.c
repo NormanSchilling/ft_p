@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/21 17:12:26 by nschilli          #+#    #+#             */
+/*   Updated: 2013/11/23 13:21:52 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+void	*ft_memcpy(void *s1, const void *s2, size_t n)
+{
+	char	*ss1;
+
+	ss1 = (char *)s1;
+	while (n--)
+		*ss1++ = *((unsigned char *)s2++);
+	return (s1);
 }

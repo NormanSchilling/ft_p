@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/21 13:26:46 by nschilli          #+#    #+#             */
+/*   Updated: 2013/11/22 12:59:58 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*cc;
+
+	cc = NULL;
+	while (*s)
+	{
+		if (*s == (char)c)
+			cc = (char *)s;
+		s++;
+	}
+	if (*s == (char)c)
+		cc = (char *)s;
+	return (cc);
 }

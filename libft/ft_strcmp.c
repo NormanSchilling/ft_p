@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/20 13:33:46 by nschilli          #+#    #+#             */
+/*   Updated: 2013/11/22 13:07:52 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+int		ft_strcmp(const char *s1, const char *s2)
+{
+	int		i;
+
+	i = 0;
+	while (s1[i] && s2[i] && (unsigned char)s1[i] == (unsigned char)s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

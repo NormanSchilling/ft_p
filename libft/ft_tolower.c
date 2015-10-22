@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/19 17:01:21 by nschilli          #+#    #+#             */
+/*   Updated: 2015/02/24 14:25:18 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+int		ft_tolower(int c)
+{
+	if (c >= (unsigned char)'A' && c <= (unsigned char)'Z')
+		return (c + 32);
+	return (c);
 }

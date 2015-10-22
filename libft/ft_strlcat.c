@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/20 16:48:51 by nschilli          #+#    #+#             */
+/*   Updated: 2013/11/25 17:40:56 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
+	size_t	len;
+	size_t	n;
+
+	len = 0;
+	while (len < size && *dest && *(dest++))
+		len++;
+	n = size - len;
+	if (!n)
+		return (len + ft_strlen(src));
+	while (*src)
+	{
+		if (n != 1)
+		{
+			*(dest++) = *src;
+			n--;
+		}
+		src++;
+		len++;
+	}
+	*dest = '\0';
+	return (len);
 }

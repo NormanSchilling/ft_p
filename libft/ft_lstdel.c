@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/12/04 11:15:18 by nschilli          #+#    #+#             */
+/*   Updated: 2013/12/04 11:16:50 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+{
+	t_list	*node;
+	t_list	*tmp;
+
+	node = *alst;
+	if (alst && *alst && (*del))
+	{
+		while (node)
+		{
+			tmp = node;
+			node = node->next;
+			(*del)(tmp->content, tmp->content_size);
+			free(tmp);
+		}
+		*alst = NULL;
+	}
 }

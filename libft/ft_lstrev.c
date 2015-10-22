@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_lstrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/12/04 11:31:14 by nschilli          #+#    #+#             */
+/*   Updated: 2013/12/04 11:33:22 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+void	ft_lstrev(t_list **begin)
+{
+	t_list	*head;
+	t_list	*tmp;
+	t_list	*tmp1;
+
+	head = *begin;
+	tmp = NULL;
+	while (head != NULL)
+	{
+		tmp1 = tmp;
+		tmp = head;
+		head = head->next;
+		tmp->next = tmp1;
+	}
+	*begin = tmp;
 }

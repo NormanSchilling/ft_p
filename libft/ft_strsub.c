@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/26 11:56:04 by nschilli          #+#    #+#             */
+/*   Updated: 2013/11/26 13:02:31 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*r;
+	size_t	i;
+
+	i = 0;
+	if (!s || (r = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		r[i] = s[start + i];
+		i++;
+	}
+	r[i] = '\0';
+	return (r);
 }

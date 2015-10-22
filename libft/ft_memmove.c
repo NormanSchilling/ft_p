@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/22 10:08:47 by nschilli          #+#    #+#             */
+/*   Updated: 2013/12/04 10:47:55 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+void	*ft_memmove(void *s1, const void *s2, size_t n)
+{
+	size_t	i;
+	char	tmp[n];
+	char	*s;
+
+	i = 0;
+	s = (char *)s1;
+	while (i < n)
+		tmp[i++] = *((char *)s2++);
+	while (i--)
+		s[i] = tmp[i];
+	return (s1);
 }

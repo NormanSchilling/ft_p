@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nschilli <nschilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/22 15:22:09 by nschilli          #+#    #+#             */
-/*   Updated: 2015/10/22 15:34:36 by nschilli         ###   ########.fr       */
+/*   Created: 2013/11/27 12:06:40 by nschilli          #+#    #+#             */
+/*   Updated: 2013/11/27 17:58:38 by nschilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char ** argv)
-{
-	if (argc != 2)
-	{
-		(void)argv;
-		ft_putstr("./serveur [addrip]");
-		exit(-1);
-	}
+#include "libft.h"
 
-	return (0);
+char	*ft_itoa(int n)
+{
+	char	ret[11];
+	char	*r;
+	int		neg;
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	neg = n < 0 ? -1 : 1;
+	while (neg * n > 9 || neg * n < 0)
+	{
+		ret[i++] = '0' + neg * (n % 10);
+		n = n / 10;
+	}
+	ret[i++] = '0' + neg * n;
+	if (neg < 0)
+		ret[i++] = '-';
+	if ((r = (char *)malloc(sizeof(char) * i)) == NULL)
+		return (NULL);
+	r[i] = '\0';
+	while (i--)
+		r[i] = ret[j++];
+	return (r);
 }
