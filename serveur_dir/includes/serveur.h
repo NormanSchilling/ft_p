@@ -14,13 +14,24 @@
 # define SERVEUR_H
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/types.h>
 # include <sys/socket.h>
 # include <unistd.h>
 # include <netdb.h>
 # include <netinet/in.h>
+# include <arpa/inet.h>
+# include <signal.h>
 # include "../../libft/libft.h"
 
-// int		create_server(int port);
+# define BUFF_SIZE 1024
 
+int		manager(int cs);
+int		listen_clients(int stock);
+int		create_server(int port);
+
+void	cmd_pwd(int sock);
+int		cmd_ls(char *buff);
+
+void	send_msg(int sock, char *msg, int flag);
 
 #endif

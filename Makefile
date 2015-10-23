@@ -23,7 +23,9 @@ CLIENT_DIR = client_dir
 SRC_DIR = /srcs/
 INC_DIR = includes/
 
-SERVEUR_FILE = main.c \
+SERVEUR_FILE =	main.c \
+				command.c \
+				handle_client.c \
 
 SERVEUR_SRC = $(addprefix $(SERVEUR_DIR)/$(SRC_DIR), $(SERVEUR_FILE))
 
