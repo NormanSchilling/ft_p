@@ -24,7 +24,7 @@ int		manager(int cs)
 		if (ft_strncmp("pwd", buff, 3) == 0)
 			cmd_pwd(cs);
 		else if (ft_strncmp("ls", buff, 2) == 0)
-			cmd_ls(buff);
+			cmd_ls(cs, buff);
 		else if (ft_strncmp(buff, "quit", 4) == 0)
 			break ;
 		else

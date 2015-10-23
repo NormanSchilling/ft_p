@@ -20,7 +20,7 @@ void		cmd_pwd(int sock)
 	ft_putendl("Launch cmd : pwd");
 }
 
-int			cmd_ls(char *buff)
+int			cmd_ls(int sock, char *buff)
 {
 	int			pid;
 	char		**cmd;
@@ -35,7 +35,8 @@ int			cmd_ls(char *buff)
 			ft_putendl("Error: execve !\n");
 			return (-1);
 		}
+		send_msg(sock, "LS", 0);
+		ft_putendl("Launch cmd : ls");
 	}
-	ft_putendl("Launch cmd : ls");
 	return (0);
 }

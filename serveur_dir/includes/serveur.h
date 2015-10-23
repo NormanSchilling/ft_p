@@ -30,7 +30,7 @@ int		listen_clients(int stock);
 int		create_server(int port);
 
 void	cmd_pwd(int sock);
-int		cmd_ls(char *buff);
+int		cmd_ls(int sock, char *buff);
 
 void	send_msg(int sock, char *msg, int flag);
 
